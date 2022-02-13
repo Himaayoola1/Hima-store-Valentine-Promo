@@ -1,0 +1,200 @@
+<!doctype html>
+	<html lang="en">
+		<head>
+			<title>Week4 Mini Project</title>
+				<!--Required meta tags-->
+				<meta charset="utf-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1">
+				
+				<!--Booststrap css-->
+				<link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+				<link rel="stylesheet" href="./fontawesome/css/fontawesome.min.css">
+				<style>
+				 *{
+					font-size:20px;
+						}
+				#yellow{
+							height:100px;
+							width:100px;
+							
+						}
+				#purple{
+							height:100px;
+							width:100px;
+						}
+				#wine{
+							height:100px;
+							width:100px;
+						}
+				.btn{
+						width:100%;
+						}
+						
+				</style>
+				
+		</head>
+		<body>
+		   <div class="container">
+				<div class="row">
+						<h3>Hima Store<h3>
+					<div>
+						<p>The store is currently running a promo for online shopper, there will be VALENTINE'S DAY Prize draw for <b>Customers who purchased up to goods worth N20,000 or up to 10 items in one transaction</b>. The interface below has been designed for customers to enter the prize draw.</p>
+						<p>Using Javascript, based on the content of the shopping cart, determine if the user is qualified for the draw or not</p>
+				
+						<p><b>Your shopping Bag...</b></p>
+					</div>
+				<div>
+					<table class="table">
+		  <thead>
+			<tr>
+			  <th class="col">Item</th>
+			  <th class="col">Quantity</th>
+			  <th class="col">Price</th>
+			  <th class="col">Check</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th class="row"><img src="yellowshirt.jpg" alt="yellowshirt" id="yellow"></th>
+			  <td>
+					<select id="firstselect"  onchange="resulta();">
+						<option value=''>Choose Quantity</option>
+						<option value = 1 >1</option>
+						<option value = 2 >2</option>
+						<option value = 3 >3</option>
+						<option value = 4 >4</option>
+					</select>
+			  </td>
+			  <td>
+					<input type="text"  name="price" id="firstprice" class="form-control"  onchange="resulta();"/>
+			  </td>
+			  <td  id="answera" ></td>
+			</tr>
+			<tr>
+			  <th class="row"><img src="purpleshirt.jpg" alt="purple shirt" id="purple" ></th>
+			  <td>
+					<select id="secondselect"  onchange="resultb();">
+                        <option value=''>Choose quantity</option>
+						<option value= 1 >1</option>
+						<option value= 2 >2</option>
+						<option value= 3 >3</option>
+						<option value= 4 >4</option>
+					</select>
+			  </td>
+			  <td>
+					<input type="text"  name="price" id="secondprice" class="form-control"  onchange="resultb();" />
+			  </td>
+			  <td id="answerb" ></td>
+			</tr>
+			<tr>
+			  <th class="row"><img src="wineshirt.jpg" alt="wine shirt" id="wine"></th>
+			  <td>
+					<select id="thirdselect" onchange="resultc();">
+					    <option value=''>Choose quantity</option>
+						<option value= 1 >1</option>
+						<option value= 2 >2</option>
+						<option value= 3 >3</option>
+						<option value= 4 >4</option>
+					</select>
+			  </td>
+			  <td>
+					<input type="text"  name="price" id="thirdprice" class="form-control"  onchange="resultc();"/>
+			  </td>
+			  <td id="answerc"> </td>
+			</tr>
+		  </tbody>
+		</table>
+						</div>
+						</div>
+						
+				<button
+				class="btn btn-danger"
+				onclick="validate();">Enter Price Draw</button>
+				
+		<div  class="row" id="drawresult">
+			<div class="col-md-2" id="resultone"></div>
+			<div class="col-md-10" id="resulttwo"></div>
+		</div>
+				
+						</div>
+		
+		<script type="text/javascript" language="javascript">
+		
+		function resulta(){
+			var shirta = document.getElementById('firstselect').value;
+			var pricea = document.getElementById('firstprice').value;
+			var totala = shirta * pricea;
+			document.getElementById('answera').innerHTML = totala;
+		}
+				
+		function resultb(){
+			var shirtb = document.getElementById('secondselect').value;
+			var priceb = document.getElementById('secondprice').value;
+			var totalb = shirtb * priceb;
+			document.getElementById('answerb').innerHTML = totalb;
+		}
+		
+		function resultc(){
+			var shirtc = document.getElementById('thirdselect').value;
+			var pricec = document.getElementById('thirdprice').value;
+			var totalc = shirtc * pricec;
+			document.getElementById('answerc').innerHTML= totalc;
+		}
+		
+		
+		
+		function validate(){
+			var quantitya = document.getElementById('firstselect').value;
+			var quantityb = document.getElementById('secondselect').value;
+			var quantityc =	document.getElementById('thirdselect').value;
+			var addpricea = document.getElementById('firstprice').value;
+			var addpriceb = document.getElementById('secondprice').value;
+			var addpricec = document.getElementById('thirdprice').value;
+			var checka = document.getElementById('answera').innerHTML;
+			var checkb = document.getElementById('answerb').innerHTML;
+			var checkc = document.getElementById('answerc').innerHTML;
+			var totalquantity = Number(quantitya) + Number(quantityb) + Number(quantityc);
+			var totalprice = Number(addpricea) + Number(addpriceb) + Number(addpricec);
+			var totalcheck = Number(checka) + Number(checkb) + Number(checkc);
+			var average = totalcheck / totalquantity ;
+			var displaya = "<img src='congrats.jpg' alt='congratulations'>"
+			var displayb = "<img src='tryagaintwo.jpg' alt='tryagain'>"
+			var congrats = ('Congratulations You Are Qualified for Our Valentine promo, you are purchasing ' +  totalquantity + 'items total amount been spent is '  +  totalcheck + '  and  average of  ' +    average  +  'naira');
+			var tryagain = ('Try Again Later By Buying More');
+			
+			
+			if(isNaN(addpricea ) || (addpriceb) ||(addpricec)){
+				alert('Kindly Input A Number')
+			
+			}else if (quantitya && addpricea ==''){
+				alert('Kindly Input A price')
+				
+			}else if(quantityb && addpriceb ==''){
+				alert('Kindly Input A price')
+			
+			}else if(quantityc && addpricec ==''){
+				alert('Kindly Input A price')
+				
+			} else if(addpricea == '' &&  addpriceb == '' && addpricec == ''){
+			   alert('Kindly Input A price')
+			
+			}else if(totalquantity >= 10 ||(totalcheck >= 20000) ){
+				//alert('Congratulations You Are Qualified for The Draw')
+				document.getElementById('resultone').innerHTML = displaya;
+				document.getElementById('resulttwo').innerHTML = congrats;
+				
+			
+			}else{
+				//alert('Try Again Later By Buying More')
+				document.getElementById('resultone').innerHTML = displayb;
+				document.getElementById('resulttwo').innerHTML = tryagain;
+			}
+		}
+		
+		
+		
+						</script>
+
+
+		</body>
+	</html>
